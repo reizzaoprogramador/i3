@@ -1,7 +1,6 @@
-
 # ==============================================================================
 # @file: ~/.config/i3/config
-# @mission: Configuração do i3wm com padrão de navegação e comandos Vim
+# @mission: Configuração consolidada do i3wm integrando o terminal Kitty, navegação Vim e automações de ambiente
 # ==============================================================================
 
 # Definição da tecla Mod (Mod4 = Tecla Windows / Super)
@@ -18,18 +17,19 @@ focus_follows_mouse yes
 
 # Ativa o tap-to-click no trackpad ao iniciar o i3
 exec_always --no-startup-id xinput set-prop "$(xinput list | grep -i touchpad | head -n 1 | sed 's/.*id=\([0-9]*\).*/\1/')" "libinput Tapping Enabled" 1
+
 # --- APLICATIVOS BÁSICOS ---
-# Abrir terminal (usando o seu shell/terminal padrão)
-bindsym $mod+Return exec i3-sensible-terminal
+# Abrir o Kitty como terminal padrão do i3
+bindsym $mod+Return exec kitty
 
 # Fechar janela focada (Padrão Vim: q para fechar/quit)
 bindsym $mod+q kill
-# Ou fechar com Alt+Shift+Q tradicional
 bindsym $mod+Shift+q kill
 
-# Iniciar lançador de aplicativos (dmenu)
+# Iniciar lançador de aplicativos e ferramentas
 bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+i exec firefox
+bindsym $mod+g exec cosmic-files >/dev/null 2>&1
 
 # --- NAVEGAÇÃO E MOVIMENTAÇÃO (Padrão Vim: h, j, k, l) ---
 
@@ -130,11 +130,8 @@ bar {
         status_command i3status
 }
 
-# BY AMBIENTE GRAFICO
-# abrir explorer files do cosmic
-bindsym $mod+g exec cosmic-files >/dev/null 2>&1
 # ==============================================================================
 # @README_Plugin
-# - O que está incluído: Configuração limpa do i3wm com navegação hjkl, fechamento com q ($mod+q) e redimensionamento via vim.
-# - Como Usar: Execute este script ou salve diretamente em ~/.config/i3/config.
+# - O que está incluído: Configuração mesclada do i3wm utilizando o terminal Kitty explicitamente no Mod+Return, atalhos Vim (h,j,k,l), suporte ao trackpad e atalhos customizados.
+# - Como Usar: Salve diretamente em ~/.config/i3/config e recarregue o i3 com Mod+Shift+c.
 # ==============================================================================
