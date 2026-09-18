@@ -31,6 +31,12 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+i exec firefox
 bindsym $mod+g exec cosmic-files >/dev/null 2>&1
 
+# Alternar entre janelas em modo empilhado/abas usando shift + setas
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
 # --- NAVEGAÇÃO E MOVIMENTAÇÃO (Padrão Vim: h, j, k, l) ---
 
 # Mover foco entre janelas
@@ -105,9 +111,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # --- SISTEMA E SESSÃO ---
 
 # Recarregar o arquivo de configuração
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 # Reiniciar o i3 in-place
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+x restart
 # Sair da sessão do i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Deseja sair do i3?' -B 'Sim' 'i3-msg exit'"
 
